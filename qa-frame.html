@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset="utf-8"><title>qa</title>
+<body style="margin:0;background:#111;display:flex;justify-content:center">
+<iframe id="f" style="border:0;background:#000"></iframe>
+<script>
+const q = new URLSearchParams(location.search);
+const f = document.getElementById('f');
+const w = +q.get('w') || 390, h = +q.get('h') || 844, y = q.get('y') || 0, sel = q.get('sel');
+f.style.width = w + 'px'; f.style.height = h + 'px';
+f.src = '/';
+f.onload = () => setTimeout(() => {
+  const d = f.contentDocument, win = f.contentWindow;
+  if (sel) { const el = d.querySelector(sel); if (el) win.scrollTo(0, el.getBoundingClientRect().top + win.scrollY - 60); }
+  else win.scrollTo(0, +y);
+  const o = d.documentElement.scrollWidth > w;
+  document.title = 'overflow:' + o + ' sw:' + d.documentElement.scrollWidth + ' broken:' + [...d.images].filter(i => i.complete && !i.naturalWidth).length;
+  if (q.get('click')) setTimeout(() => d.querySelector(q.get('click'))?.click(), 400);
+}, 3200);
+</script>

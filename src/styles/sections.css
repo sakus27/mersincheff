@@ -1,0 +1,629 @@
+/* ═══════════════════════════════════════════
+   HERO — 3D Editorial Depth & Atmospheric Sizzle
+   ═══════════════════════════════════════════ */
+
+/* ── Root container ── */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: max(22px, env(safe-area-inset-top));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+  padding-inline: var(--pad);
+  text-align: center;
+  /* Deep near-black roasted chocolate */
+  background: #0d0603;
+}
+
+/* ── BG: warm ambient radial atmosphere ── */
+.hero__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 95% 70% at 50% 38%,
+      rgba(140, 52, 10, .44) 0%,
+      rgba(80, 26, 6, .26) 48%,
+      transparent 78%),
+    #0d0603;
+}
+
+/* ── Film grain ── */
+.hero__grain {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  opacity: .12; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ── Warm glowing aura — radiates behind the food ── */
+.hero__glow {
+  position: absolute; z-index: 2;
+  width: min(98vw, 540px); height: min(98vw, 540px);
+  left: 50%; top: 34%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(closest-side,
+    rgba(240, 115, 20, .85) 0%,
+    rgba(215, 80, 10, .45) 40%,
+    rgba(150, 45, 5, .12) 75%,
+    transparent 100%);
+  filter: blur(12px);
+  opacity: 0;
+  animation: glow-in 1.3s .15s var(--ease) forwards, glow-pulse 6s 1.6s ease-in-out infinite alternate;
+}
+
+/* ── Living rising heat embers ── */
+.hero__embers {
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none; overflow: hidden;
+}
+.ember {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff9d3b, #eb580c);
+  box-shadow: 0 0 8px #ff7b25;
+  opacity: 0;
+  pointer-events: none;
+}
+.e1 { width: 4px; height: 4px; left: 24%; top: 58%; animation: ember-rise 4.8s .2s infinite ease-out; }
+.e2 { width: 5px; height: 5px; left: 74%; top: 54%; animation: ember-rise 5.5s 1.1s infinite ease-out; }
+.e3 { width: 3px; height: 3px; left: 45%; top: 62%; animation: ember-rise 4.2s 2.4s infinite ease-out; }
+.e4 { width: 4px; height: 4px; left: 32%; top: 46%; animation: ember-rise 6.0s .8s infinite ease-out; }
+.e5 { width: 3px; height: 3px; left: 66%; top: 40%; animation: ember-rise 5.1s 3.0s infinite ease-out; }
+.e6 { width: 4px; height: 4px; left: 52%; top: 50%; animation: ember-rise 4.5s 1.7s infinite ease-out; }
+
+/* ── Location — top center with accent lines ── */
+.hero__loc {
+  position: relative; z-index: 6;
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px;
+  color: var(--gold);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase;
+  opacity: 0;
+  animation: rise .6s .1s var(--ease) forwards;
+}
+.hero__loc-line {
+  display: block; width: 26px; height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--orange-hi), var(--gold));
+  flex-shrink: 0;
+}
+.hero__loc-line:last-child {
+  background: linear-gradient(270deg, transparent, var(--orange-hi), var(--gold));
+}
+
+/* ── 3D Stage: Food plate (Enlarged and centered) ── */
+.hero__stage {
+  position: relative; z-index: 4;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: auto;
+  margin-bottom: clamp(10px, 2vh, 22px);
+}
+
+.hero__plate {
+  position: relative;
+  /* Enlarged: prominent, succulent, dominating upper frame */
+  width: min(84vw, 42vh, 370px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  border-radius: 50%;
+  animation: hero-float 7s ease-in-out infinite;
+  box-shadow:
+    0 24px 50px -10px rgba(0, 0, 0, .95),
+    0 0 45px rgba(235, 110, 20, .42);
+}
+
+.hero__plate img {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+
+  /* Soft feathered circular mask for seamless atmospheric blend */
+  mask-image: radial-gradient(circle at center, #000 76%, rgba(0, 0, 0, .88) 86%, rgba(0, 0, 0, .3) 95%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, #000 76%, rgba(0, 0, 0, .88) 86%, rgba(0, 0, 0, .3) 95%, transparent 100%);
+
+  /* Warm rim lighting and crisp saturation */
+  filter: drop-shadow(0 -4px 18px rgba(255, 130, 30, .35)) saturate(1.14) brightness(1.04);
+  opacity: 0;
+  animation: plate-in 1.1s .3s var(--ease) forwards;
+}
+
+/* ── Copy block — raised up directly beneath plate ── */
+.hero__copy {
+  position: relative; z-index: 5;
+  display: flex; flex-direction: column; align-items: center;
+  margin-bottom: auto;
+}
+
+/* Stacked editorial block typography */
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: .91;
+  text-align: center;
+  color: #F6ECE1;
+  text-shadow:
+    0 3px 0 #080302,
+    0 10px 24px rgba(0, 0, 0, .85),
+    0 0 35px rgba(220, 80, 15, .22);
+  opacity: 0;
+  animation: rise .9s .5s var(--ease) forwards;
+  font-size: clamp(44px, 12.8vw, 88px);
+  letter-spacing: -.02em;
+}
+.hero__title span { display: block; }
+.hero__title .t1 { color: #F6ECE1; }
+.hero__title .t2 { color: #F6ECE1; }
+.hero__title .t3 { color: #FF6C19; }
+
+/* CTA — Shimmer Pill Button */
+.hero__cta {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(14px, 2.2vh, 22px);
+  width: 100%; max-width: 270px;
+  height: 50px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FF7B25 0%, #E85B0A 100%);
+  color: #120703;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 10px 26px -4px rgba(235, 91, 10, .55),
+              0 0 20px rgba(255, 123, 37, .32);
+  transition: transform .2s ease, box-shadow .2s ease;
+  text-decoration: none;
+  opacity: 0;
+  animation: rise .7s 1s var(--ease) forwards;
+}
+.hero__cta::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg);
+  animation: cta-shimmer 3.6s 2.2s infinite ease-in-out;
+}
+.hero__cta:hover, .hero__cta:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 32px -4px rgba(235, 91, 10, .7),
+              0 0 28px rgba(255, 123, 37, .5);
+}
+.hero__cta:active {
+  transform: translateY(1px) scale(.98);
+}
+.hero__cta svg {
+  color: #120703;
+  animation: nudge 2.4s 2.2s ease-in-out infinite;
+}
+
+/* ── Keyframes ── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes glow-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(.8); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes glow-pulse {
+  0%   { transform: translate(-50%, -50%) scale(1);   filter: blur(12px) brightness(1); }
+  100% { transform: translate(-50%, -50%) scale(1.08); filter: blur(16px) brightness(1.2); }
+}
+@keyframes plate-in {
+  from { opacity: 0; transform: scale(.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes ember-rise {
+  0%   { transform: translateY(0) scale(.6); opacity: 0; }
+  30%  { opacity: .85; }
+  70%  { opacity: .5; }
+  100% { transform: translateY(-90px) translateX(12px) scale(.3); opacity: 0; }
+}
+@keyframes cta-shimmer {
+  0%, 65% { left: -100%; }
+  100%    { left: 180%; }
+}
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(3px); }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero__glow, .hero__plate img, .hero__loc, .hero__title, .hero__cta, .ember {
+    opacity: 1 !important; animation: none !important;
+    transform: none !important; filter: none !important;
+  }
+}
+
+/* ── Desktop Hero (>= 960px) ── */
+@media (min-width: 960px) {
+  .hero {
+    min-height: 100svh;
+    max-height: 960px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "loc   loc"
+      "stage copy";
+    align-items: center;
+    justify-content: center;
+    padding-top: max(32px, env(safe-area-inset-top));
+    padding-bottom: max(42px, env(safe-area-inset-bottom));
+    padding-inline: max(40px, calc((100vw - 1200px) / 2));
+    column-gap: clamp(32px, 5vw, 64px);
+    row-gap: 20px;
+    text-align: left;
+  }
+
+  /* Location badge — centered at top */
+  .hero__loc {
+    grid-area: loc;
+    align-self: start;
+    justify-self: center;
+    margin-bottom: 4px;
+    font-size: 12px;
+    letter-spacing: .32em;
+  }
+
+  /* Left column: food stage */
+  .hero__stage {
+    grid-area: stage;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+  }
+
+  .hero__plate {
+    width: min(44vw, 480px);
+    aspect-ratio: 1;
+    box-shadow:
+      0 32px 70px -10px rgba(0, 0, 0, .95),
+      0 0 60px rgba(235, 110, 20, .45);
+  }
+
+  /* Glow orb positioned behind the left plate */
+  .hero__glow {
+    width: min(52vw, 580px);
+    height: min(52vw, 580px);
+    left: calc(27% + 10px);
+    top: 54%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Right column: typography & CTA */
+  .hero__copy {
+    grid-area: copy;
+    justify-self: start;
+    align-self: center;
+    align-items: flex-start;
+    text-align: left;
+    margin: 0;
+    max-width: 540px;
+  }
+
+  .hero__title {
+    text-align: left;
+    font-size: clamp(48px, 4.6vw, 76px);
+    line-height: .92;
+    letter-spacing: -.02em;
+  }
+
+  .hero__cta {
+    margin-top: 28px;
+    width: auto;
+    min-width: 260px;
+    max-width: 300px;
+    height: 52px;
+    font-size: 14px;
+    align-self: flex-start;
+  }
+}
+
+
+
+/* ───────── Menu sections ───────── */
+.menu {
+  padding-bottom: 12px;
+}
+
+.section--featured {
+  padding-top: 40px;
+}
+
+.section--featured .shead {
+  margin-bottom: 4px;
+}
+
+.family {
+  margin-top: 36px;
+}
+
+.family:first-of-type {
+  margin-top: 8px;
+}
+
+.family__name {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.family__name::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-warm), transparent);
+}
+
+.section--special {
+  position: relative;
+}
+
+.section--special .families {
+  display: grid;
+  gap: 0;
+}
+
+#ekstra .list {
+  padding: 4px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: rgba(244, 229, 206, .03);
+}
+
+.section--drinks .drinks {
+  display: grid;
+  gap: 18px;
+}
+
+.list--drinks {
+  padding: 2px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.section--drinks .row__name {
+  font-size: 15.5px;
+}
+
+/* ───────── Contact ───────── */
+.section--contact {
+  padding-top: 60px;
+}
+
+.contact {
+  display: grid;
+  gap: 16px;
+}
+
+.panel {
+  position: relative;
+  padding: 24px 22px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.panel__eyebrow {
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+
+.panel__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 9vw, 42px);
+  line-height: 1.05;
+  color: var(--cream);
+}
+
+.panel--call {
+  background: radial-gradient(90% 120% at 100% 0%, rgba(234, 118, 42, .35), transparent 60%), linear-gradient(135deg, var(--burnt), var(--brown));
+  border-color: var(--line-warm);
+}
+
+.panel--call .panel__title {
+  margin: 6px 0 18px;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 64px;
+  border-radius: 14px;
+  text-decoration: none;
+  background: var(--gold);
+  color: var(--choc);
+  font-weight: 700;
+  font-size: clamp(20px, 6vw, 26px);
+  letter-spacing: .03em;
+  box-shadow: 0 14px 30px -12px rgba(242, 185, 43, .55);
+  transition: transform .2s var(--ease);
+}
+
+.phone:hover {
+  transform: translateY(-2px);
+}
+
+.phone:active {
+  transform: scale(.98);
+}
+
+.panel--find {
+  background: var(--surface);
+}
+
+.addr {
+  margin: 12px 0 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.actions {
+  display: grid;
+  gap: 12px;
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* ───────── Footer ───────── */
+.footer {
+  margin-top: 56px;
+  padding: 36px var(--pad) max(40px, env(safe-area-inset-bottom));
+  text-align: center;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .25));
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--cream);
+  letter-spacing: .02em;
+}
+
+.footer__brand span {
+  color: var(--orange-hi);
+}
+
+.footer__line {
+  margin-top: 10px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.footer__links {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+  font-size: 15px;
+}
+
+.footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer__links a:hover {
+  color: var(--gold);
+}
+
+.footer__links i {
+  font-style: normal;
+  opacity: .4;
+  align-self: center;
+}
+
+/* ───────── Tablet ───────── */
+@media (min-width: 700px) {
+  :root {
+    --pad: 36px;
+  }
+
+  .section {
+    padding-top: 64px;
+  }
+
+  .grid--2 {
+    gap: 22px;
+    row-gap: 14px;
+  }
+
+  .grid--dessert {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section--drinks .drinks {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .rail .card {
+    flex-basis: 320px;
+  }
+}
+
+/* ───────── Desktop (Menu layout) ───────── */
+@media (min-width: 960px) {
+
+  .rail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+    padding: 0 0 22px;
+    margin-inline: 0;
+    gap: 28px;
+  }
+
+  .rail .card {
+    flex: initial;
+  }
+
+  .section--special .families {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 44px;
+  }
+
+  .grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #tavuk .grid--2,
+  #et .grid--2 {
+    max-width: 760px;
+  }
+
+  .section--contact .contact {
+    grid-template-columns: 1fr 1.25fr;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .card__name {
+    font-size: 17px;
+  }
+}

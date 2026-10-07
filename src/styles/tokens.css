@@ -1,0 +1,39 @@
+:root {
+  /* Palette */
+  --choc: #24140E;
+  --brown: #3A1D12;
+  --burnt: #6B2E16;
+  --orange: #C95A20;
+  --orange-hi: #EA762A;
+  --gold: #F2B92B;
+  --cream: #F4E5CE;
+  --white: #F8F4ED;
+
+  /* Functional (derived from palette) */
+  --bg: var(--choc);
+  --surface: #2E1A12;           /* between choc and brown */
+  --surface-2: var(--brown);
+  --line: rgba(244, 229, 206, .12);
+  --line-warm: rgba(234, 118, 42, .35);
+  --text: var(--white);
+  --text-dim: rgba(244, 229, 206, .72);
+
+  /* Type */
+  --font-display: 'Alfa Slab One', 'Rockwell', 'Georgia', serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Space & shape */
+  --pad: clamp(16px, 5vw, 28px);
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 22px;
+  --max: 1120px;
+  --nav-h: 56px;
+
+  /* Elevation (layered, restrained) */
+  --shadow-1: 0 1px 0 rgba(255,255,255,.04) inset, 0 8px 18px -8px rgba(0,0,0,.6);
+  --shadow-2: 0 24px 40px -20px rgba(0,0,0,.75), 0 6px 14px -6px rgba(0,0,0,.5);
+  --glow: 0 0 60px -12px rgba(234, 118, 42, .45);
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
