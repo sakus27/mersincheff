@@ -89,6 +89,24 @@
 .rail::-webkit-scrollbar { display: none; }
 .rail .card { flex: 0 0 min(76vw, 320px); scroll-snap-align: start; }
 
+
+/* ───────── Drinks menu ───────── */
+.drinks { display: flex; flex-direction: column; gap: 26px; }
+.drink-group__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; }
+.card--drink { margin-top: 0; padding: 0 10px 14px; min-width: 0; }
+.card--drink .card__media {
+  margin: 0 0 12px;
+  aspect-ratio: 4 / 4.8;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.12));
+}
+.card--drink .card__media img { object-fit: contain; padding: 8px; }
+.card--drink .card__name { font-size: 15px; }
+.card--drink .card__price { padding-top: 8px; }
+@media (min-width: 760px) {
+  .drink-group__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+}
+
 /* ───────── Lists (extras, drinks) ───────── */
 .list { display: flex; flex-direction: column; }
 .row__btn {
