@@ -1,6 +1,6 @@
 import { products, specialFamilies, drinkGroups, where } from '../data/menu.js';
 import { tx, t } from '../data/i18n.js';
-import { price, currency } from '../utils/dom.js';
+import { img, price, currency } from '../utils/dom.js';
 import { productCard } from '../components/productCard.js';
 import { sectionHead } from '../components/sectionHead.js';
 
@@ -50,30 +50,25 @@ export function desserts() {
   </section>`;
 }
 
-/** İÇECEKLER — visual drink cards using the newly uploaded product photos. */
+/** İÇECEKLER — keep the original compact list layout, adding only the drink thumbnails. */
 export function drinks() {
   return `
   <section class="section section--drinks" id="icecek" aria-labelledby="h-icecek">
     ${sectionHead(t('ui.drinks'), '', 'h-icecek')}
     <div class="drinks">
-      ${drinkGroups.map((g) => {
-        const items = where((p) => p.group === g);
-        return `
-        <div class="drink-group">
-          <div class="drink-group__grid">${items.map((p) => productCard(p, {
-            variant: 'drink',
-            sizes: '(min-width:900px) 20vw, 45vw'
-          })).join('')}</div>
-        </div>`;
-      }).join('')}
+      ${drinkGroups.map((g) => `
+        <ul class="list list--drinks" role="list">
+          ${where((p) => p.group === g).map((p) => listRow(p, true)).join('')}
+        </ul>`).join('')}
     </div>
   </section>`;
 }
 
-function listRow(p) {
+function listRow(p, withImage = false) {
   return `
-  <li class="row">
+  <li class="row${withImage ? ' row--drink' : ''}">
     <button type="button" class="row__btn" data-product="${p.id}" aria-haspopup="dialog" aria-label="${tx(p.name)}, ${price(p.price)} ${currency()}">
+      ${withImage ? `<span class="row__thumb">${img(p.image, tx(p.name), { sizes: '48px' })}</span>` : ''}
       <span class="row__name">${tx(p.name)}</span>
       <span class="row__dots" aria-hidden="true"></span>
       <span class="row__price">${price(p.price)}<small>${currency()}</small></span>
