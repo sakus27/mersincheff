@@ -1,0 +1,11 @@
+{
+  "name": "Mersin Cheff Tantuni",
+  "short_name": "Mersin Cheff",
+  "lang": "tr",
+  "dir": "ltr",
+  "display": "standalone",
+  "start_url": "./",
+  "scope": "./",
+  "theme_color": "#24140E",
+  "background_color": "#24140E"
+}
