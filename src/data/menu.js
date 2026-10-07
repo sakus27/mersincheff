@@ -51,19 +51,19 @@ export const products = [
   { id: 'kazandibi', category: 'tatli', name: { tr: 'Kazandibi' }, price: 130, ...dessert('kazandibi') },
 
   // ───────── İÇECEKLER ─────────
-  { id: 'salgam', category: 'icecek', group: 'salgam', name: { tr: 'Mersin Şalgam' }, price: 70, ...drink('salgam') },
-  { id: 'kola', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Kola' }, price: 70, ...drink('kola') },
-  { id: 'fanta', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Fanta' }, price: 70, ...drink('fanta') },
-  { id: 'sprite', category: 'icecek', group: 'gazli', name: { tr: 'Sprite' }, price: 70, ...drink('sprite') },
-  { id: 'icetea-mango', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Mango' }, price: 70, ...drink('icetea-mango') },
-  { id: 'icetea-karpuz', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Karpuz' }, price: 70, ...drink('icetea-karpuz') },
-  { id: 'icetea-seftali', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Şeftali' }, price: 70, ...drink('icetea-seftali') },
-  { id: 'su', category: 'icecek', group: 'su', name: { tr: 'Su' }, price: 70, ...drink('su') },
-  { id: 'ayran-naneli', category: 'icecek', group: 'ayran', name: { tr: 'Naneli Ayran' }, price: 70, ...drink('ayran-naneli') },
-  { id: 'ayran-eksili', category: 'icecek', group: 'ayran', name: { tr: 'Ekşili Ayran' }, price: 70, ...drink('ayran-eksili') },
-  { id: 'ayran-acili', category: 'icecek', group: 'ayran', name: { tr: 'Acılı Ayran' }, price: 70, ...drink('ayran-acili') },
-  { id: 'ayran-kucuk', category: 'icecek', group: 'ayran', name: { tr: 'Küçük Ayran' }, price: 30, ...drink('ayran-kucuk') },
-  { id: 'ayran-buyuk', category: 'icecek', group: 'ayran', name: { tr: 'Büyük Ayran' }, price: 70, ...drink('ayran-buyuk') },
+  { id: 'salgam', category: 'icecek', group: 'salgam', name: { tr: 'Mersin Şalgam' }, price: 70, ...drink('salgam.webp') },
+  { id: 'kola', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Kola' }, price: 70, ...drink('kola.jpg') },
+  { id: 'fanta', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Fanta' }, price: 70, ...drink('fanta.jpg') },
+  { id: 'sprite', category: 'icecek', group: 'gazli', name: { tr: 'Sprite' }, price: 70, ...drink('sprite.jpg') },
+  { id: 'icetea-mango', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Mango' }, price: 70, ...drink('icetea-mango.webp') },
+  { id: 'icetea-karpuz', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Karpuz' }, price: 70, ...drink('icetea-karpuz.webp') },
+  { id: 'icetea-seftali', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Şeftali' }, price: 70, ...drink('icetea-seftali.jpg') },
+  { id: 'su', category: 'icecek', group: 'su', name: { tr: 'Su' }, price: 70, ...drink('su.jpg') },
+  { id: 'ayran-naneli', category: 'icecek', group: 'ayran', name: { tr: 'Naneli Ayran' }, price: 70, ...drink('ayran-naneli.jpg') },
+  { id: 'ayran-eksili', category: 'icecek', group: 'ayran', name: { tr: 'Ekşili Ayran' }, price: 70, ...drink('ayran-eksili.jpg') },
+  { id: 'ayran-acili', category: 'icecek', group: 'ayran', name: { tr: 'Acılı Ayran' }, price: 70, ...drink('ayran-acili.jpg') },
+  { id: 'ayran-kucuk', category: 'icecek', group: 'ayran', name: { tr: 'Küçük Ayran' }, price: 30, ...drink('ayran-kucuk.jpg') },
+  { id: 'ayran-buyuk', category: 'icecek', group: 'ayran', name: { tr: 'Büyük Ayran' }, price: 70, ...drink('ayran-buyuk.webp') },
 ];
 
 export const specialFamilies = [
