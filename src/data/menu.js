@@ -1,12 +1,13 @@
 /**
  * SINGLE SOURCE OF TRUTH for the menu. Change a price here and it updates everywhere.
- * Image paths are base paths (no extension): `<path>.webp` (800px) and `<path>-sm.webp` (400px).
+ * Image paths are base paths (no extension): <path>.webp (800px) and <path>-sm.webp (400px).
  * source: 'real' = restaurant photo, 'generated' = locally stored, restaurant-matching image.
  */
 const A = 'assets';
 const real = (n) => ({ image: `${A}/food-original/${n}`, source: 'real' });
 const gen = (n) => ({ image: `${A}/food-generated/${n}`, source: 'generated' });
 const dessert = (n) => ({ image: `${A}/desserts/${n}`, source: 'generated' });
+const drink = (n) => ({ image: `${A}/drinks/${n}`, source: 'real' });
 
 export const products = [
   // ───────── TAVUK ─────────
@@ -50,22 +51,21 @@ export const products = [
   { id: 'kazandibi', category: 'tatli', name: { tr: 'Kazandibi' }, price: 130, ...dessert('kazandibi') },
 
   // ───────── İÇECEKLER ─────────
-  { id: 'salgam', category: 'icecek', group: 'salgam', name: { tr: 'Mersin Şalgam' }, price: 70 },
-  { id: 'kola', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Kola' }, price: 70 },
-  { id: 'fanta', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Fanta' }, price: 70 },
-  { id: 'sprite', category: 'icecek', group: 'gazli', name: { tr: 'Sprite' }, price: 70 },
-  { id: 'icetea-mango', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Mango' }, price: 70 },
-  { id: 'icetea-karpuz', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Karpuz' }, price: 70 },
-  { id: 'icetea-seftali', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Şeftali' }, price: 70 },
-  { id: 'su', category: 'icecek', group: 'su', name: { tr: 'Su' }, price: 70 },
-  { id: 'ayran-naneli', category: 'icecek', group: 'ayran', name: { tr: 'Naneli Ayran' }, price: 70 },
-  { id: 'ayran-eksili', category: 'icecek', group: 'ayran', name: { tr: 'Ekşili Ayran' }, price: 70 },
-  { id: 'ayran-acili', category: 'icecek', group: 'ayran', name: { tr: 'Acılı Ayran' }, price: 70 },
-  { id: 'ayran-kucuk', category: 'icecek', group: 'ayran', name: { tr: 'Küçük Ayran' }, price: 30 },
-  { id: 'ayran-buyuk', category: 'icecek', group: 'ayran', name: { tr: 'Büyük Ayran' }, price: 70 },
+  { id: 'salgam', category: 'icecek', group: 'salgam', name: { tr: 'Mersin Şalgam' }, price: 70, ...drink('salgam') },
+  { id: 'kola', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Kola' }, price: 70, ...drink('kola') },
+  { id: 'fanta', category: 'icecek', group: 'gazli', name: { tr: 'Şişe Fanta' }, price: 70, ...drink('fanta') },
+  { id: 'sprite', category: 'icecek', group: 'gazli', name: { tr: 'Sprite' }, price: 70, ...drink('sprite') },
+  { id: 'icetea-mango', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Mango' }, price: 70, ...drink('icetea-mango') },
+  { id: 'icetea-karpuz', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Karpuz' }, price: 70, ...drink('icetea-karpuz') },
+  { id: 'icetea-seftali', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Şeftali' }, price: 70, ...drink('icetea-seftali') },
+  { id: 'su', category: 'icecek', group: 'su', name: { tr: 'Su' }, price: 70, ...drink('su') },
+  { id: 'ayran-naneli', category: 'icecek', group: 'ayran', name: { tr: 'Naneli Ayran' }, price: 70, ...drink('ayran-naneli') },
+  { id: 'ayran-eksili', category: 'icecek', group: 'ayran', name: { tr: 'Ekşili Ayran' }, price: 70, ...drink('ayran-eksili') },
+  { id: 'ayran-acili', category: 'icecek', group: 'ayran', name: { tr: 'Acılı Ayran' }, price: 70, ...drink('ayran-acili') },
+  { id: 'ayran-kucuk', category: 'icecek', group: 'ayran', name: { tr: 'Küçük Ayran' }, price: 30, ...drink('ayran-kucuk') },
+  { id: 'ayran-buyuk', category: 'icecek', group: 'ayran', name: { tr: 'Büyük Ayran' }, price: 70, ...drink('ayran-buyuk') },
 ];
 
-/** Special-product families shown in ÖZEL LEZZETLER. */
 export const specialFamilies = [
   { id: 'tanburger', name: { tr: 'Tanburger' } },
   { id: 'cheddarli', name: { tr: 'Cheddarlı' } },
@@ -75,7 +75,6 @@ export const specialFamilies = [
 
 export const drinkGroups = ['salgam', 'gazli', 'icetea', 'su', 'ayran'];
 
-/** Sticky category bar. `target` = id of the section it scrolls to. */
 export const categories = [
   { id: 'all', label: { tr: 'TÜMÜ' }, target: 'tavuk' },
   { id: 'tavuk', label: { tr: 'TAVUK' }, target: 'tavuk' },
