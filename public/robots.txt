@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Add the live site's absolute sitemap URL after the Netlify/custom domain is known.
