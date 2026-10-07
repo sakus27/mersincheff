@@ -10,7 +10,10 @@ export const money = (n) => `${price(n)} ${currency()}`;
 
 /** Responsive <img> for a base path (`x` → x-sm.webp 400w, x.webp 800w). */
 export function img(base, alt, { sizes = '50vw', eager = false, cls = '' } = {}) {
-  return `<img class="${cls}" src="${url(base)}.webp" srcset="${url(base)}-sm.webp 400w, ${url(base)}.webp 800w"
+  const hasExt = /\.(?:webp|jpg|jpeg|png)$/i.test(base);
+  const src = hasExt ? url(base) : `${url(base)}.webp`;
+  const srcset = hasExt ? src : `${url(base)}-sm.webp 400w, ${url(base)}.webp 800w`;
+  return `<img class="${cls}" src="${src}" srcset="${srcset}"
     sizes="${sizes}" width="800" height="800" alt="${alt}" ${eager ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"'}>`;
 }
 
