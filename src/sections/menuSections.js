@@ -1,10 +1,8 @@
 import { products, specialFamilies, drinkGroups, where } from '../data/menu.js';
 import { tx, t } from '../data/i18n.js';
-import { money, price, currency } from '../utils/dom.js';
+import { price, currency } from '../utils/dom.js';
 import { productCard } from '../components/productCard.js';
 import { sectionHead } from '../components/sectionHead.js';
-
-
 
 /** TAVUK / ET — classic items (non-special). Specials live in ÖZEL LEZZETLER. */
 export function classic(category, title, eyebrow) {
@@ -52,16 +50,22 @@ export function desserts() {
   </section>`;
 }
 
-/** İÇECEKLER — light compact list, grouped. */
+/** İÇECEKLER — visual drink cards using the newly uploaded product photos. */
 export function drinks() {
   return `
   <section class="section section--drinks" id="icecek" aria-labelledby="h-icecek">
     ${sectionHead(t('ui.drinks'), '', 'h-icecek')}
     <div class="drinks">
-      ${drinkGroups.map((g) => `
-        <ul class="list list--drinks" role="list">
-          ${where((p) => p.group === g).map(listRow).join('')}
-        </ul>`).join('')}
+      ${drinkGroups.map((g) => {
+        const items = where((p) => p.group === g);
+        return `
+        <div class="drink-group">
+          <div class="drink-group__grid">${items.map((p) => productCard(p, {
+            variant: 'drink',
+            sizes: '(min-width:900px) 20vw, 45vw'
+          })).join('')}</div>
+        </div>`;
+      }).join('')}
     </div>
   </section>`;
 }
