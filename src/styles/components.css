@@ -33,10 +33,7 @@
   box-shadow: var(--shadow-1);
   transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
 }
-.card::after { /* warm rim highlight */
-  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  background: radial-gradient(90% 40% at 50% 0%, rgba(234,118,42,.14), transparent 70%);
-}
+.card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(90% 40% at 50% 0%, rgba(234,118,42,.14), transparent 70%); }
 .card__media {
   position: relative; display: block; z-index: 1;
   margin: -28px -4px 12px; border-radius: 16px; overflow: hidden; aspect-ratio: 1; background: var(--surface-2);
@@ -51,28 +48,21 @@
 .card__price { margin-top: auto; padding-top: 10px; display: flex; align-items: baseline; gap: 4px; color: var(--gold); }
 .card__price b { font-weight: 700; font-size: 20px; line-height: 1; }
 .card__price small { font-size: 13px; font-weight: 600; opacity: .8; }
-
 @media (hover: hover) {
   .card:hover { transform: translateY(-4px); border-color: var(--line-warm); box-shadow: var(--shadow-2), var(--glow); }
   .card:hover .card__media { transform: translateY(-5px) scale(1.015); }
   .card:hover .card__media img { transform: scale(1.06); }
 }
 .card:active { transform: scale(.985); }
-
-/* Feature variant — larger, more expressive */
 .card--feature { margin-top: 38px; padding: 0 14px 18px; border-color: rgba(242,185,43,.15); border-radius: 20px; }
 .card--feature .card__media { margin: -38px -8px 16px; border-radius: 16px; }
 .card--feature .card__name { font-family: var(--font-display); font-weight: 400; font-size: 19px; color: var(--cream); letter-spacing: .02em; }
 .card--feature .card__price b { font-size: 24px; }
 .card--feature .card__desc { font-size: 13.5px; }
-
-/* Mini variant — specials (quieter hierarchy) */
 .card--mini { margin-top: 16px; padding-bottom: 12px; }
 .card--mini .card__media { margin-top: -16px; }
 .card--mini .card__name { font-size: 14.5px; font-weight: 500; }
 .card--mini .card__price b { font-size: 18px; }
-
-/* Dessert variant — elegant, centered, round plate crop */
 .card--dessert { align-items: center; text-align: center; margin-top: 0; padding: 14px 10px 16px; background: var(--surface); border-color: rgba(244,229,206,.08); }
 .card--dessert .card__media { margin: 0 0 12px; width: 100%; border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
 .card--dessert .card__body { align-items: center; }
@@ -89,35 +79,22 @@
 .rail::-webkit-scrollbar { display: none; }
 .rail .card { flex: 0 0 min(76vw, 320px); scroll-snap-align: start; }
 
-
-/* ───────── Drinks menu ───────── */
-.drinks { display: flex; flex-direction: column; gap: 26px; }
-.drink-group__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; }
-.card--drink { margin-top: 0; padding: 0 10px 14px; min-width: 0; }
-.card--drink .card__media {
-  margin: 0 0 12px;
-  aspect-ratio: 4 / 4.8;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.12));
-}
-.card--drink .card__media img { object-fit: contain; padding: 8px; }
-.card--drink .card__name { font-size: 15px; }
-.card--drink .card__price { padding-top: 8px; }
-@media (min-width: 760px) {
-  .drink-group__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-}
-
 /* ───────── Lists (extras, drinks) ───────── */
 .list { display: flex; flex-direction: column; }
 .row__btn {
-  display: flex; align-items: baseline; gap: 10px; width: 100%; min-height: 48px; padding: 12px 0; text-align: left;
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 12px 0; text-align: left;
   border-bottom: 1px solid var(--line); transition: padding .25s var(--ease), color .2s;
 }
 .row:last-child .row__btn { border-bottom: 0; }
 .row__name { font-weight: 500; font-size: 16px; color: var(--white); }
-.row__dots { flex: 1; border-bottom: 2px dotted rgba(244,229,206,.22); transform: translateY(-4px); min-width: 12px; }
+.row__dots { flex: 1; border-bottom: 2px dotted rgba(244,229,206,.22); transform: translateY(-1px); min-width: 12px; }
 .row__price { font-weight: 700; font-size: 17px; color: var(--gold); white-space: nowrap; }
 .row__price small { font-size: 12px; margin-left: 3px; }
+.row__thumb {
+  width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center;
+  overflow: hidden; border-radius: 6px; background: #fff;
+}
+.row__thumb img { width: 100%; height: 100%; object-fit: contain; padding: 3px; display: block; }
 @media (hover: hover) { .row__btn:hover { padding-left: 6px; } .row__btn:hover .row__name { color: var(--gold); } }
 
 /* ───────── Bottom sheet ───────── */
