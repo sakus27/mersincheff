@@ -36,7 +36,7 @@ export function extras() {
   return `
   <section class="section" id="ekstra" aria-labelledby="h-ekstra">
     ${sectionHead(t('ui.extras'), '', 'h-ekstra')}
-    <ul class="list" role="list">${items.map(listRow).join('')}</ul>
+    <ul class="list list--extras" role="list">${items.map(extraRow).join('')}</ul>
   </section>`;
 }
 
@@ -62,6 +62,17 @@ export function drinks() {
         </ul>`).join('')}
     </div>
   </section>`;
+}
+
+function extraRow(p) {
+  return `
+  <li class="row">
+    <button type="button" class="row__btn" data-product="${p.id}" aria-haspopup="dialog" aria-label="${tx(p.name)}, ${price(p.price)} ${currency()}">
+      <span class="row__name">${tx(p.name)}</span>
+      <span class="row__dots" aria-hidden="true"></span>
+      <span class="row__price">${price(p.price)}<small>${currency()}</small></span>
+    </button>
+  </li>`;
 }
 
 function listRow(p, withImage = false) {
