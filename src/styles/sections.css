@@ -388,6 +388,14 @@
   background: transparent;
 }
 
+#ekstra .row__thumb {
+  display: none !important;
+}
+
+#ekstra .row__btn {
+  gap: 0;
+}
+
 .section--drinks .drinks {
   display: grid;
   gap: 18px;
