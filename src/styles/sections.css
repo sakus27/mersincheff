@@ -35,7 +35,7 @@
 .hero__grain {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   opacity: .12; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 /* ── Warm glowing aura — radiates behind the food ── */
@@ -272,6 +272,7 @@
     text-align: left;
   }
 
+  /* Location badge — centered at top */
   .hero__loc {
     grid-area: loc;
     align-self: start;
@@ -281,6 +282,7 @@
     letter-spacing: .32em;
   }
 
+  /* Left column: food stage */
   .hero__stage {
     grid-area: stage;
     justify-self: center;
@@ -296,6 +298,7 @@
       0 0 60px rgba(235, 110, 20, .45);
   }
 
+  /* Glow orb positioned behind the left plate */
   .hero__glow {
     width: min(52vw, 580px);
     height: min(52vw, 580px);
@@ -304,6 +307,7 @@
     transform: translate(-50%, -50%);
   }
 
+  /* Right column: typography & CTA */
   .hero__copy {
     grid-area: copy;
     justify-self: start;
@@ -331,6 +335,8 @@
     align-self: flex-start;
   }
 }
+
+
 
 /* ───────── Menu sections ───────── */
 .menu {
@@ -380,20 +386,11 @@
   gap: 0;
 }
 
-/* EKSTRALAR: keep the section title and item names, remove the surrounding box. */
 #ekstra .list {
-  padding: 4px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-
-#ekstra .row__thumb {
-  display: none !important;
-}
-
-#ekstra .row__btn {
-  gap: 0;
+  padding: 4px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: rgba(244, 229, 206, .03);
 }
 
 .section--drinks .drinks {
