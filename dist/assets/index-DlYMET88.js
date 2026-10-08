@@ -53,7 +53,7 @@
   </section>`}function R(){let e=p(e=>e.category===`extra`);return`
   <section class="section" id="ekstra" aria-labelledby="h-ekstra">
     ${F(n(`ui.extras`),``,`h-ekstra`)}
-    <ul class="list" role="list">${e.map(V).join(``)}</ul>
+    <ul class="list" role="list">${e.map(e=>V(e,!1)).join(``)}</ul>
   </section>`}function z(){let e=p(e=>e.category===`tatli`);return`
   <section class="section section--dessert" id="tatli" aria-labelledby="h-tatli">
     ${F(n(`ui.desserts`),``,`h-tatli`)}
