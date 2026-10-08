@@ -386,6 +386,13 @@
   gap: 0;
 }
 
+/* EKSTRALAR are intentionally text-only: never reserve or render an image slot. */
+#ekstra .row__thumb,
+#ekstra .row__media,
+#ekstra .row img {
+  display: none !important;
+}
+
 #ekstra .list {
   padding: 4px 18px;
   border: 1px solid var(--line);
