@@ -36,7 +36,7 @@ export function extras() {
   return `
   <section class="section" id="ekstra" aria-labelledby="h-ekstra">
     ${sectionHead(t('ui.extras'), '', 'h-ekstra')}
-    <ul class="list list--extras" role="list">${items.map(extraRow).join('')}</ul>
+    <ul class="list" role="list">${items.map((p) => listRow(p, false)).join('')}</ul>
   </section>`;
 }
 
