@@ -46,7 +46,7 @@ export const products = [
 
   // ───────── TATLILAR ─────────
   { id: 'puding', category: 'tatli', name: { tr: 'Puding' }, price: 60, ...dessert('puding') },
-  { id: 'sutlac', category: 'tatli', name: { tr: 'Sütlaç' }, price: 110, ...dessert('sutlac') },
+  { id: 'sutlac', category: 'tatli', name: { tr: 'Sütlaç' }, price: 130, ...dessert('sutlac') },
   { id: 'trilece', category: 'tatli', name: { tr: 'Trileçe' }, price: 130, ...dessert('trilece') },
   { id: 'kazandibi', category: 'tatli', name: { tr: 'Kazandibi' }, price: 130, ...dessert('kazandibi') },
 
@@ -58,7 +58,7 @@ export const products = [
   { id: 'icetea-mango', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Mango' }, price: 70, ...drink('icetea-mango.webp') },
   { id: 'icetea-karpuz', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Karpuz' }, price: 70, ...drink('icetea-karpuz.webp') },
   { id: 'icetea-seftali', category: 'icecek', group: 'icetea', name: { tr: 'Ice Tea Şeftali' }, price: 70, ...drink('icetea-seftali.jpg') },
-  { id: 'su', category: 'icecek', group: 'su', name: { tr: 'Su' }, price: 70, ...drink('su.jpg') },
+  { id: 'su', category: 'icecek', group: 'su', name: { tr: 'Su' }, price: 20, ...drink('su.jpg') },
   { id: 'ayran-naneli', category: 'icecek', group: 'ayran', name: { tr: 'Naneli Ayran' }, price: 70, ...drink('ayran-naneli.jpg') },
   { id: 'ayran-eksili', category: 'icecek', group: 'ayran', name: { tr: 'Ekşili Ayran' }, price: 70, ...drink('ayran-eksili.jpg') },
   { id: 'ayran-acili', category: 'icecek', group: 'ayran', name: { tr: 'Acılı Ayran' }, price: 70, ...drink('ayran-acili.jpg') },
