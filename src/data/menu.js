@@ -29,7 +29,7 @@ export const products = [
   { id: 'durum-et', category: 'et', variant: 'et', name: { tr: 'Dürüm Et Tantuni' }, price: 310,
     ...gen('durum-et-tantuni') },
   { id: 'somun-et', category: 'et', variant: 'et', name: { tr: 'Somun Et Tantuni' }, price: 330,
-    ...gen('somun-et-tantuni') },
+    ...real('SomunEtTantuni.PNG') },
   { id: 'yogurtlu-et', category: 'et', variant: 'et', special: 'yogurtlu', name: { tr: 'Yoğurtlu Et Tantuni' }, price: 390,
     ...gen('yogurtlu-et-tantuni') },
   { id: 'tanburger-et', category: 'et', variant: 'et', special: 'tanburger', name: { tr: 'Tanburger Et Tantuni' }, price: 380,
@@ -37,7 +37,7 @@ export const products = [
   { id: 'cheddarli-et', category: 'et', variant: 'et', special: 'cheddarli', name: { tr: 'Cheddarlı Et Tantuni' }, price: 380,
     ...gen('cheddarli-et-tantuni') },
   { id: 'begendili-et', category: 'et', variant: 'et', special: 'begendili', name: { tr: 'Beğendili Et Tantuni' }, price: 400,
-    ...gen('begendili-et-tantuni') },
+    ...real('BeğendiliEtTantuni.jpeg') },
 
   // ───────── EKSTRALAR ─────────
   { id: 'icli-kofte', category: 'extra', name: { tr: 'İçli Köfte' }, price: 90 },
